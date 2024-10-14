@@ -17,7 +17,7 @@
         
          
             $host = "localhost";
-            $database = "ecomerceb2";
+            $database = "ecommerce";
             $dbuserame = "root";
             $dbpassword = "";
             
