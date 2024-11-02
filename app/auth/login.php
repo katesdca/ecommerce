@@ -6,21 +6,17 @@
 
     session_start();
 
-   
+    include('../config/DatabaseConnect.php');
 
     if($_SERVER["REQUEST_METHOD"] == "POST")
     {
         //connect to databse
-            $host = "localhost";
-            $database = "ecommerce";
-            $dbuserame = "root";
-            $dbpassword = "";
-            
-            $dsn = "mysql: host=$host;dbname=$database;";
+        $db = new DatabaseConnect();
+        $conn = $db->connectDB();
+
+          
             try {
-                $conn = new PDO($dsn, $dbuserame, $dbpassword);
-                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
+               
                 $stmt = $conn->prepare('SELECT * FROM `users` WHERE username = :p_username');    
                 $stmt->bindParam(':p_username', $username);
                 $stmt->execute();
