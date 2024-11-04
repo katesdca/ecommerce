@@ -1,9 +1,15 @@
-    <?php require_once("includes/header.php")?>
-    <!-- Navbar -->
-    <?php require_once("includes/navbar.php")?>
+<?php
+require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
+require_once("includes\header.php");
+session_start();
+?>
 
+    <!-- Navbar -->
+    <?php
+require_once("includes\\navbar.php");
+?>
     <!-- Shopping Cart -->
-    <div class="container content my-5">
+    <div class="container mt-5">
         <div class="row">
             <!-- Shopping Cart Items -->
             <div class="col-md-8">
@@ -78,8 +84,6 @@
         </div>
     </div>
     
-   
-
-    <?php require_once("includes/footer.php")?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

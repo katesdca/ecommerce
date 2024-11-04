@@ -1,53 +1,53 @@
-    <?php 
-    session_start();
-    require_once("includes/header.php");
-        if(isset($_SESSION["error"]))
-    {
-        $messErr = $_SESSION["error"];
-        unset($_SESSION["error"]);
-       
-    }
-    if(isset($_SESSION["error"]))
-    {
-        $messSucc = $_SESSION["error"];
-        unset($_SESSION["error"]);
-       
-    }
-    ?>
-    <?php require_once("includes/navbar.php")?>
+<?php
+session_start();
+require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
+require_once("includes\header.php");
+if(isset($_SESSION["error"])){
+    $messErr = $_SESSION["error"];
+    unset($_SESSION["error"]);
+}
+if(isset($_SESSION["success"])){
+    $messSuc = $_SESSION["success"];
+    unset($_SESSION["success"]);
+}
+
+?>
+
+    <!-- Navbar -->
+    <?php
+require_once("includes\\navbar.php");
+?>
 
     <!-- Registration Form -->
-    <div class="container content my-5">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
+                        
                     <div class="card-header bg-primary text-white text-center">
                         <h4>Create Your Account</h4>
                     </div>
                     <div class="card-body">
-                        
-                    <?php if(isset($messSuc)){?>
+                    <?php if(isset($messSuc)){ ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
-                     <strong><?php echo $messSucc; ?></strong> 
+                        <strong><?php echo $messSuc; ?></strong> 
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                            <?php } ?>
+                    </div>
+                    <?php } ?>
 
-                            <?php if(isset($messErr)){?>
-
+                    <?php if(isset($messErr)){ ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                     <strong>  <strong><?php echo $messErr; ?></strong> </strong> 
+                        <strong><?php echo $messErr; ?></strong> 
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                                <?php } ?>
-
-                        <form action="app/auth/register.php" method="POST">
+                    </div>
+                    <?php } ?>
+                        <form action="app/auth/Register.php" method="POST">
                             <div class="mb-3">
                                 <label for="fullName" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name" required>
                             </div>
                             <div class="mb-3">
-                                <label for="username" class="form-label">Email Address</label>
+                                <label for="username" class="form-label">username</label>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
                             </div>
                             <div class="mb-3">
@@ -71,6 +71,6 @@
         </div>
     </div>
 
-    <?php require_once("includes/footer.php")?>
-</body>
-</html>
+    <!-- Bootstrap 5 JS Bundle -->
+    <?php require_once(ROOT_DIR."/includes/footer.php")?>
+   

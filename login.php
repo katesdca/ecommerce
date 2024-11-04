@@ -1,20 +1,21 @@
-    <?php
-        session_start();
-    require_once("includes/header.php");
-        if(isset($_SESSION["error"]))
-        {
-            $messErr = $_SESSION["error"];
-            unset($_SESSION["error"]);
-           
-        }
-    ?>
+<?php
+session_start();
+require_once($_SERVER["DOCUMENT_ROOT"]."/app/config/Directories.php");
+require_once("includes\header.php");
+if(isset($_SESSION["error"])){
+    $messErr = $_SESSION["error"];
+    echo $messErr;
+    unset($_SESSION["error"]);
+}
 
+?>
     <!-- Navbar -->
-    <?php require_once("includes/navbar.php")
-    ?>
+    <?php
+require_once("includes\\navbar.php");
+?>
 
     <!-- Login Form -->
-    <div class="container content mt-5">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
@@ -22,18 +23,19 @@
                         <h4>Login to Your Account</h4>
                     </div>
                     <div class="card-body">
-               
-
-                    <?php if(isset($messErr)){?>
-
+                         <?php 
+                            if(isset($messErr)){
+                            ?>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                     <strong>  <strong><?php echo $messErr; ?></strong> </strong> 
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                    <?php } ?>
-                        <form action="app/auth/login.php" method="POST">
+                            <strong>Holy guacamole!</strong> lagi kanalang mali.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                                <?php 
+                                }
+                                ?>
+                        <form action="app/auth/Login.php" method="POST">
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
+                                <label for="username" class="form-label">username</label>
                                 <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username" required>
                             </div>
                             <div class="mb-3">
@@ -55,7 +57,5 @@
     </div>
     
     
-
-    <?php require_once("includes/footer.php")?>
-</body>
-</html>
+    <?php require_once(ROOT_DIR."/includes/footer.php")?>
+ 
